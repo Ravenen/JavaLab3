@@ -43,22 +43,6 @@ public abstract class AbstractDecor {
 		this.type = type;
 	}
 
-	public static Comparator<AbstractDecor> priceComparator = new Comparator<AbstractDecor>() {
-
-		@Override
-		public int compare(AbstractDecor firstDecor, AbstractDecor secondDecor) {
-			return (firstDecor.priceInHryvnas < secondDecor.priceInHryvnas) ? -1
-					: (firstDecor.priceInHryvnas == secondDecor.priceInHryvnas) ? 0 : 1;
-		}
-	};
-
-	public static Comparator<AbstractDecor> colorComparator = new Comparator<AbstractDecor>() {
-		@Override
-		public int compare(AbstractDecor firstDecor, AbstractDecor secondDecor) {
-			return firstDecor.color.compareTo(secondDecor.color);
-		}
-	};
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
