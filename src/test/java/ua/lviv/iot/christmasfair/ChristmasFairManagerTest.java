@@ -3,7 +3,6 @@ package ua.lviv.iot.christmasfair;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.EnumSet;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,9 +11,6 @@ import org.junit.jupiter.api.Test;
 import ua.lviv.iot.christmasfair.manager.ChristmasFairManager;
 import ua.lviv.iot.christmasfair.model.AbstractDecor;
 import ua.lviv.iot.christmasfair.model.DecorationType;
-import ua.lviv.iot.christmasfair.model.Garland;
-import ua.lviv.iot.christmasfair.model.Light;
-import ua.lviv.iot.christmasfair.model.TreeToy;
 
 class ChristmasFairManagerTest extends BaseChristmasFairTest {
 
