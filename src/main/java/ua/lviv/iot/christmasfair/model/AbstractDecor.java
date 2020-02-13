@@ -1,6 +1,5 @@
 package ua.lviv.iot.christmasfair.model;
 
-import java.util.Comparator;
 import java.util.EnumSet;
 
 public abstract class AbstractDecor {
