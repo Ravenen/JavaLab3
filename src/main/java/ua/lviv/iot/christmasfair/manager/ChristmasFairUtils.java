@@ -1,5 +1,6 @@
 package ua.lviv.iot.christmasfair.manager;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
@@ -33,7 +34,8 @@ public class ChristmasFairUtils {
 
 	private static List<AbstractDecor> sortDecorationsBy(List<AbstractDecor> decorations, SortType sortType,
 			Comparator<AbstractDecor> comparator) {
-		return sortDecorationsBy(decorations, sortType, comparator);
+		decorations.sort(sortType == SortType.ASCENDING ? comparator : Collections.reverseOrder(comparator));
+		return decorations;
 	}
 
 	private Comparator<AbstractDecor> producerComparator = new Comparator<AbstractDecor>() {
