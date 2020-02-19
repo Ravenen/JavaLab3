@@ -15,7 +15,7 @@ import ua.lviv.iot.christmasfair.model.DecorationType;
 class ChristmasFairManagerTest extends BaseChristmasFairTest {
 
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() {
 		createDecorations();
 	}
 
