@@ -15,7 +15,8 @@ public class ChristmasFairUtils {
 	}
 
 	public static List<AbstractDecor> sortDecorationsByColor(List<AbstractDecor> decorations, SortType sortType) {
-		Comparator<AbstractDecor> comparator = (new ChristmasFairUtils()).new ColorComparator();
+		ChristmasFairUtils utils = new ChristmasFairUtils();
+		Comparator<AbstractDecor> comparator = utils.new ColorComparator();
 		return sortDecorationsBy(decorations, sortType, comparator);
 	}
 
