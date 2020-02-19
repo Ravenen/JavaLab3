@@ -4,6 +4,7 @@ import java.util.EnumSet;
 
 public abstract class AbstractDecor {
 
+	private static final int DEFAULT_YEAR_OF_PRODUCTION = 1970;
 	private static final String DEFAULT_PRODUCER = "Unknown Chinese Producer";
 
 	protected String color;
@@ -13,7 +14,7 @@ public abstract class AbstractDecor {
 	protected EnumSet<DecorationType> type;
 
 	public AbstractDecor(String color, double priceInHryvnas, EnumSet<DecorationType> type) {
-		this(color, priceInHryvnas, type, DEFAULT_PRODUCER, 1970);
+		this(color, priceInHryvnas, type, DEFAULT_PRODUCER, DEFAULT_YEAR_OF_PRODUCTION);
 	}
 
 	public AbstractDecor(String color, double priceInHryvnas, EnumSet<DecorationType> type, String producer,
