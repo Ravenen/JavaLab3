@@ -3,15 +3,43 @@ package ua.lviv.iot.christmasfair.model;
 import java.util.EnumSet;
 
 public abstract class AbstractDecor {
+
+	private static final String DEFAULT_PRODUCER = "Unknown Chinese Producer";
+
 	protected String color;
 	protected double priceInHryvnas;
+	protected String producer;
+	protected int yearOfProduction;
 	protected EnumSet<DecorationType> type;
 
 	public AbstractDecor(String color, double priceInHryvnas, EnumSet<DecorationType> type) {
+		this(color, priceInHryvnas, type, DEFAULT_PRODUCER, 1970);
+	}
+
+	public AbstractDecor(String color, double priceInHryvnas, EnumSet<DecorationType> type, String producer,
+			int yearOfProduction) {
 		super();
 		this.color = color;
 		this.priceInHryvnas = priceInHryvnas;
 		this.type = type;
+		this.producer = producer;
+		this.yearOfProduction = yearOfProduction;
+	}
+
+	public String getProducer() {
+		return producer;
+	}
+
+	public void setProducer(String producer) {
+		this.producer = producer;
+	}
+
+	public int getYearOfProduction() {
+		return yearOfProduction;
+	}
+
+	public void setYearOfProduction(int yearOfProduction) {
+		this.yearOfProduction = yearOfProduction;
 	}
 
 	public boolean checkCriterion(EnumSet<DecorationType> criterion) {
