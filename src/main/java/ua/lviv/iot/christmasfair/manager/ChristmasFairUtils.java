@@ -1,9 +1,9 @@
 package ua.lviv.iot.christmasfair.manager;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 import ua.lviv.iot.christmasfair.model.AbstractDecor;
 import ua.lviv.iot.christmasfair.model.SortType;
 
@@ -47,7 +47,9 @@ public class ChristmasFairUtils {
 
 	};
 
-	private static class PriceComparator implements Comparator<AbstractDecor> {
+	private static class PriceComparator implements Comparator<AbstractDecor>, Serializable {
+		private static final long serialVersionUID = 8317167932461794587L;
+
 		@Override
 		public int compare(AbstractDecor firstDecor, AbstractDecor secondDecor) {
 			return (int) (firstDecor.getPriceInHryvnas() - secondDecor.getPriceInHryvnas());

@@ -48,17 +48,22 @@ public class Light extends AbstractDecor {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (!super.equals(obj)) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Light other = (Light) obj;
-		if (Double.doubleToLongBits(maxVoltage) != Double.doubleToLongBits(other.maxVoltage))
+		if (Double.doubleToLongBits(maxVoltage) != Double.doubleToLongBits(other.maxVoltage)) {
 			return false;
-		if (numberOfBulbs != other.numberOfBulbs)
+		}
+		if (numberOfBulbs != other.numberOfBulbs) {
 			return false;
+		}
 		return true;
 	}
 

@@ -3,7 +3,6 @@ package ua.lviv.iot.christmasfair.manager;
 import java.util.EnumSet;
 import java.util.LinkedList;
 import java.util.List;
-
 import ua.lviv.iot.christmasfair.model.AbstractDecor;
 import ua.lviv.iot.christmasfair.model.DecorationType;
 

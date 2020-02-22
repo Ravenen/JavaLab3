@@ -45,20 +45,26 @@ public class TreeToy extends AbstractDecor {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (!super.equals(obj)) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		TreeToy other = (TreeToy) obj;
 		if (form == null) {
-			if (other.form != null)
+			if (other.form != null) {
 				return false;
-		} else if (!form.equals(other.form))
+			}
+		} else if (!form.equals(other.form)) {
 			return false;
-		if (volumeInCmCube != other.volumeInCmCube)
+		}
+		if (volumeInCmCube != other.volumeInCmCube) {
 			return false;
+		}
 		return true;
 	}
 
