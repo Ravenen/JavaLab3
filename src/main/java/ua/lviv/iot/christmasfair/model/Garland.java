@@ -48,17 +48,22 @@ public class Garland extends AbstractDecor {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this == obj) {
 			return true;
-		if (!super.equals(obj))
+		}
+		if (!super.equals(obj)) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
+		}
 		Garland other = (Garland) obj;
-		if (isNatural != other.isNatural)
+		if (isNatural != other.isNatural) {
 			return false;
-		if (Double.doubleToLongBits(lengthInMetres) != Double.doubleToLongBits(other.lengthInMetres))
+		}
+		if (Double.doubleToLongBits(lengthInMetres) != Double.doubleToLongBits(other.lengthInMetres)) {
 			return false;
+		}
 		return true;
 	}
 
