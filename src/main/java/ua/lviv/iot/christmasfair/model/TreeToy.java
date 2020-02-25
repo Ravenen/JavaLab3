@@ -28,10 +28,17 @@ public class TreeToy extends AbstractDecor {
 		this.volumeInCmCube = volumeInCmCube;
 	}
 
+	public String getHeaders() {
+		return super.getHeaders() + ", form, volumeInCmCube";
+	}
+	
+	public String toCSV() {
+		return super.toCSV() + ", " + form + ", " + volumeInCmCube;
+	}
+	
 	@Override
 	public String toString() {
-		return "TreeToy [form=" + form + ", volumeInCmCube=" + volumeInCmCube + ", color=" + color + ", priceInHryvnas="
-				+ priceInHryvnas + ", type=" + type + "]";
+		return "TreeToy [form=" + form + ", volumeInCmCube=" + volumeInCmCube + super.toString();
 	}
 
 	@Override
