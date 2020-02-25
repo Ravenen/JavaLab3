@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import ua.lviv.iot.christmasfair.model.AbstractDecor;
 
@@ -14,9 +16,10 @@ public class DecorWriter {
 	}
 
 	public static void writeToFile(List<AbstractDecor> decorations, File file) {
-		try (Writer textWriter = new FileWriter(file);) {
+		try (Writer textWriter = new FileWriter(file, StandardCharsets.UTF_8);) {
 			for (AbstractDecor currentDecor : decorations) {
-				DecorWriter.writeLine(textWriter, currentDecor.getHeaders() + ", " + currentDecor.toCSV());
+				String lineToWrite = currentDecor.getHeaders() + ", " + currentDecor.toCSV();
+				DecorWriter.writeLine(textWriter, lineToWrite);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
