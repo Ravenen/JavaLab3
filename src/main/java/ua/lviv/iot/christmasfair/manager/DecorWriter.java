@@ -19,8 +19,8 @@ public class DecorWriter {
 				writeLine(textWriter, currentDecor.getHeaders() + ", " + currentDecor.toCSV());
 			}
 		} catch (IOException e) {
-			
-		}
+			e.printStackTrace();
+		} 
 	}
 	
 	private void writeLine(Writer writer, String text) throws IOException {
