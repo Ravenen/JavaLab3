@@ -28,11 +28,18 @@ public class Garland extends AbstractDecor {
 	public void setNatural(boolean isNatural) {
 		this.isNatural = isNatural;
 	}
+	
+	public String getHeaders() {
+		return super.getHeaders() + ", lengthInMetres, isNatural";
+	}
+	
+	public String toCSV() {
+		return super.toCSV() + ", " + lengthInMetres + ", " + isNatural;
+	}
 
 	@Override
 	public String toString() {
-		return "Garland [lengthInMetres=" + lengthInMetres + ", isNatural=" + isNatural + ", color=" + color
-				+ ", priceInHryvnas=" + priceInHryvnas + ", type=" + type + "]";
+		return "Garland [lengthInMetres=" + lengthInMetres + ", isNatural=" + isNatural + super.toString();
 	}
 
 	@Override

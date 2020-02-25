@@ -28,11 +28,18 @@ public class Light extends AbstractDecor {
 	public void setNumberOfBulbs(int numberOfBulbs) {
 		this.numberOfBulbs = numberOfBulbs;
 	}
+	
+	public String getHeaders() {
+		return super.getHeaders() + ", maxVoltage, numberOfBulbs";
+	}
+	
+	public String toCSV() {
+		return super.toCSV() + ", " + maxVoltage + ", " + numberOfBulbs;
+	}
 
 	@Override
 	public String toString() {
-		return "Light [maxVoltage=" + maxVoltage + ", numberOfBulbs=" + numberOfBulbs + ", color=" + color
-				+ ", priceInHryvnas=" + priceInHryvnas + ", type=" + type + "]";
+		return "Light [maxVoltage=" + maxVoltage + ", numberOfBulbs=" + numberOfBulbs + super.toString();
 	}
 
 	@Override

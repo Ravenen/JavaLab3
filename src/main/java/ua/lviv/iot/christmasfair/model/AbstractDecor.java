@@ -71,6 +71,20 @@ public abstract class AbstractDecor {
 		this.type = type;
 	}
 
+	public String getHeaders() {
+		return "color, priceInHryvnas, producer, yearOfProduction, type";
+	}
+
+	public String toCSV() {
+		return color + ", " + priceInHryvnas + ", " + producer + ", " + type;
+	}
+
+	@Override
+	public String toString() {
+		return "color=" + color + ", priceInHryvnas=" + priceInHryvnas + ", producer=" + producer
+				+ ", yearOfProduction=" + yearOfProduction + ", type=" + type + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
