@@ -54,12 +54,12 @@ public class ChristmasFairUtils {
 		public int compare(AbstractDecor firstDecor, AbstractDecor secondDecor) {
 			return (int) (firstDecor.getPriceInHryvnas() - secondDecor.getPriceInHryvnas());
 		}
-	};
+	}
 
 	private class ColorComparator implements Comparator<AbstractDecor> {
 		@Override
 		public int compare(AbstractDecor firstDecor, AbstractDecor secondDecor) {
 			return firstDecor.getColor().compareTo(secondDecor.getColor());
 		}
-	};
+	}
 }
