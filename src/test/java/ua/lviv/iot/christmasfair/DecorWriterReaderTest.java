@@ -1,15 +1,12 @@
 package ua.lviv.iot.christmasfair;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import ua.lviv.iot.christmasfair.manager.DecorWriter;
 import ua.lviv.iot.christmasfair.model.AbstractDecor;
 

@@ -3,7 +3,6 @@ package ua.lviv.iot.christmasfair.manager;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
-
 import ua.lviv.iot.christmasfair.model.AbstractDecor;
 
 public class DecorWriter {
