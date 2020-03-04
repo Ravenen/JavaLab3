@@ -7,28 +7,27 @@ import ua.lviv.iot.christmasfair.model.AbstractDecor;
 
 public class DecorWriter {
 
-	Writer textWriter;
+  Writer textWriter;
 
-	public void setTextWriter(Writer textWriter) {
-		this.textWriter = textWriter;
-	}
+  public void setTextWriter(Writer textWriter) {
+    this.textWriter = textWriter;
+  }
 
-	public void writeToFile(List<AbstractDecor> decorations) throws IOException {
-		for (AbstractDecor currentDecor : decorations) {
-			String lineToWrite = currentDecor.getHeaders() + ", " + currentDecor.toCSV();
-			writeLine(textWriter, lineToWrite);
-		}
-		textWriter.flush();
-	}
+  public void writeToFile(List<AbstractDecor> decorations) throws IOException {
+    for (AbstractDecor currentDecor : decorations) {
+      String lineToWrite = currentDecor.getHeaders() + ", " + currentDecor.toCSV();
+      writeLine(textWriter, lineToWrite);
+    }
+    textWriter.flush();
+  }
 
-	private void writeLine(Writer writer, String text) throws IOException {
-		writer.write(text + "\r\n");
-	}
+  private void writeLine(Writer writer, String text) throws IOException {
+    writer.write(text + "\r\n");
+  }
 
-	@Override
-	public String toString() {
-		return textWriter.toString();
-	}
-	
-	
+  @Override
+  public String toString() {
+    return textWriter.toString();
+  }
+
 }
