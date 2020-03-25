@@ -5,6 +5,10 @@ import java.util.EnumSet;
 public class Light extends AbstractDecor {
   private double maxVoltage;
   private int numberOfBulbs;
+  
+  public Light() {
+    super();
+  }
 
   public Light(String color, double priceInHryvnas, EnumSet<DecorationType> type, double maxVoltage,
       int numberOfBulbs) {
