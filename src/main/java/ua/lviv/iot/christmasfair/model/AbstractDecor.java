@@ -12,6 +12,11 @@ public abstract class AbstractDecor {
   protected String producer;
   protected int yearOfProduction;
   protected EnumSet<DecorationType> type;
+  protected Integer id;
+  
+  public AbstractDecor() {
+    
+  }
 
   public AbstractDecor(String color, double priceInHryvnas, EnumSet<DecorationType> type) {
     this(color, priceInHryvnas, type, DEFAULT_PRODUCER, DEFAULT_YEAR_OF_PRODUCTION);
@@ -69,6 +74,14 @@ public abstract class AbstractDecor {
 
   public void setType(EnumSet<DecorationType> type) {
     this.type = type;
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public String getHeaders() {
