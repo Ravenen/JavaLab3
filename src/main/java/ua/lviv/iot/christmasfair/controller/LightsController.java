@@ -55,9 +55,10 @@ public class LightsController {
   @PutMapping("/{id}")
   public ResponseEntity<Light> updateLight(final @PathVariable("id") Integer lightId, final @RequestBody Light light) {
     light.setId(lightId);
-    ResponseEntity<Light> response = lights.replace(lightId, light) == null
+    Light oldLight = lights.put(lightId, light);
+    ResponseEntity<Light> response = oldLight == null
         ? new ResponseEntity<Light>(HttpStatus.NOT_FOUND)
-        : new ResponseEntity<Light>(light, HttpStatus.OK);
+        : new ResponseEntity<Light>(oldLight, HttpStatus.OK);
     return response;
   }
   
