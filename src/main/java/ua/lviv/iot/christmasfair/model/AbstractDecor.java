@@ -1,7 +1,10 @@
 package ua.lviv.iot.christmasfair.model;
 
 import java.util.EnumSet;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +23,9 @@ public abstract class AbstractDecor {
   protected double priceInHryvnas;
   protected String producer;
   protected int yearOfProduction;
-  protected EnumSet<DecorationType> type;
+  @Column
+  @ElementCollection(targetClass=DecorationType.class)
+  protected Set<DecorationType> type;
   
   public AbstractDecor() {
     
@@ -76,7 +81,7 @@ public abstract class AbstractDecor {
     this.priceInHryvnas = priceInHryvnas;
   }
 
-  public EnumSet<DecorationType> getType() {
+  public Set<DecorationType> getType() {
     return type;
   }
 
