@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import ua.lviv.iot.christmasfair.model.Light;
 
 @Repository
-public interface LightRepository extends JpaRepository<Integer, Light> {
+public interface LightRepository extends JpaRepository<Light, Integer> {
 
 }
