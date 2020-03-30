@@ -10,12 +10,12 @@ public abstract class AbstractDecor {
   private static final int DEFAULT_YEAR_OF_PRODUCTION = 1970;
   private static final String DEFAULT_PRODUCER = "Unknown Chinese Producer";
 
+  protected Integer id;
   protected String color;
   protected double priceInHryvnas;
   protected String producer;
   protected int yearOfProduction;
   protected EnumSet<DecorationType> type;
-  protected Integer id;
   
   public AbstractDecor() {
     
