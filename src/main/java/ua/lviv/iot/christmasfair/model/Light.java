@@ -2,6 +2,9 @@ package ua.lviv.iot.christmasfair.model;
 
 import java.util.EnumSet;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Light extends AbstractDecor {
   private double maxVoltage;
   private int numberOfBulbs;
