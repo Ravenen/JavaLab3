@@ -2,6 +2,9 @@ package ua.lviv.iot.christmasfair.model;
 
 import java.util.EnumSet;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -10,6 +13,8 @@ public abstract class AbstractDecor {
   private static final int DEFAULT_YEAR_OF_PRODUCTION = 1970;
   private static final String DEFAULT_PRODUCER = "Unknown Chinese Producer";
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
   protected Integer id;
   protected String color;
   protected double priceInHryvnas;
