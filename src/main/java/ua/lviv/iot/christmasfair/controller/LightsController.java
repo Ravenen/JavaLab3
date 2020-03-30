@@ -31,11 +31,6 @@ public class LightsController {
     return new LinkedList<Light>(lights.values());
   }
 
-  @GetMapping("/temp")
-  public Light getTeplate() {
-    return new Light("red", 25.5, EnumSet.of(DecorationType.DOOR), 220.0, 20);
-  }
-
   @GetMapping("/{id}")
   public ResponseEntity<Light> getLight(final @PathVariable("id") Integer lightId) {
     Light currentLight;
