@@ -1,6 +1,5 @@
 package ua.lviv.iot.christmasfair.controller;
 
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ua.lviv.iot.christmasfair.model.DecorationType;
 import ua.lviv.iot.christmasfair.model.Light;
 
 @RequestMapping("/lights")

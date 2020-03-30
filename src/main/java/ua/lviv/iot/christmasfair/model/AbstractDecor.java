@@ -1,7 +1,6 @@
 package ua.lviv.iot.christmasfair.model;
 
 import java.util.EnumSet;
-
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
