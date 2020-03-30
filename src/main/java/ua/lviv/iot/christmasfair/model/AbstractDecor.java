@@ -1,9 +1,7 @@
 package ua.lviv.iot.christmasfair.model;
 
 import java.util.EnumSet;
-import javax.persistence.MappedSuperclass;
 
-@MappedSuperclass
 public abstract class AbstractDecor {
 
   private static final int DEFAULT_YEAR_OF_PRODUCTION = 1970;
