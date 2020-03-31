@@ -13,32 +13,41 @@ public class LightService {
 
   @Autowired
   private LightRepository lightRepository;
-  
+
   public Light createLight(Light light) {
     return lightRepository.save(light);
   }
-  
+
   public Light getLight(Integer lightId) {
-    return lightRepository.findById(lightId).get();
+    if (lightRepository.existsById(lightId)) {
+      return lightRepository.findById(lightId).get();
+    } else {
+      return null;
+    }
   }
-  
+
   public List<Light> getAllLights() {
     return lightRepository.findAll();
   }
-  
+
   public Light updateLight(Integer lightId, Light light) {
-    Light oldLight = lightRepository.findById(lightId).get();
-    if (oldLight != null) {
+    if (lightRepository.existsById(lightId)) {
+      Light oldLight = lightRepository.findById(lightId).get();
       lightRepository.save(light);
+      return oldLight;
     }
-    return oldLight;
+    else {
+      return null;
+    }
   }
-  
-  public Light deleteLight(Integer lightId) {
-    Light foundLight = lightRepository.findById(lightId).get();
-    if (foundLight != null) {
+
+  public boolean deleteLight(Integer lightId) {
+    if (lightRepository.existsById(lightId)) {
       lightRepository.deleteById(lightId);
+      return true;
     }
-    return foundLight;
+    else {
+      return false;
+    }
   }
 }

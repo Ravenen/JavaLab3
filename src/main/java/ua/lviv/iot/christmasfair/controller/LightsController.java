@@ -59,7 +59,7 @@ public class LightsController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Light> deleteLight(final @PathVariable("id") Integer lightId) {
-    HttpStatus status = lightService.deleteLight(lightId) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+    HttpStatus status = lightService.deleteLight(lightId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
     return new ResponseEntity<Light>(status);
   }
 }
