@@ -2,6 +2,7 @@ package ua.lviv.iot.christmasfair.business;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +20,7 @@ public class LightService {
   }
 
   public Light getLight(Integer lightId) {
-    if (lightRepository.existsById(lightId)) {
-      return lightRepository.findById(lightId).get();
-    } else {
-      return null;
-    }
+    return lightRepository.findById(lightId).orElse(null);
   }
 
   public List<Light> getAllLights() {
@@ -31,22 +28,21 @@ public class LightService {
   }
 
   public Light updateLight(Integer lightId, Light light) {
-    if (lightRepository.existsById(lightId)) {
-      Light oldLight = lightRepository.findById(lightId).get();
+    Light oldLight = null;
+    Light foundLight = lightRepository.findById(lightId).orElse(null);
+    if (foundLight != null) {
+      oldLight = new Light();
+      BeanUtils.copyProperties(foundLight, oldLight);
       lightRepository.save(light);
-      return oldLight;
     }
-    else {
-      return null;
-    }
+    return oldLight;
   }
 
   public boolean deleteLight(Integer lightId) {
     if (lightRepository.existsById(lightId)) {
       lightRepository.deleteById(lightId);
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
