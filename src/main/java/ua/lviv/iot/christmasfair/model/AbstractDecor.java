@@ -5,10 +5,17 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @MappedSuperclass
 public abstract class AbstractDecor {
@@ -24,11 +31,23 @@ public abstract class AbstractDecor {
   protected String producer;
   protected int yearOfProduction;
   @Column
-  @ElementCollection(targetClass=DecorationType.class)
+  @ElementCollection(targetClass = DecorationType.class)
   protected Set<DecorationType> type;
   
+//  @ManyToOne(fetch = FetchType.EAGER, targetEntity = DecorBox.class)
+//  @JoinColumn(name = "box_id")
+//  @JsonIgnoreProperties("decorations")
+//  protected DecorBox box;
+//  
+//  @ManyToMany(fetch = FetchType.EAGER, targetEntity = Viewer.class)
+//  @JoinTable(name = "Decor_Viewers", joinColumns = {
+//      @JoinColumn(name = "decor_id", nullable = false) }, inverseJoinColumns = {
+//          @JoinColumn(name = "viewer_id", nullable = false) })
+//  @JsonIgnoreProperties("observedDecorations")
+//  protected Set<Viewer> viewers;
+
   public AbstractDecor() {
-    
+
   }
 
   public AbstractDecor(String color, double priceInHryvnas, EnumSet<DecorationType> type) {
@@ -96,6 +115,22 @@ public abstract class AbstractDecor {
   public void setId(Integer id) {
     this.id = id;
   }
+
+//  public DecorBox getBox() {
+//    return box;
+//  }
+//
+//  public void setBox(DecorBox box) {
+//    this.box = box;
+//  }
+//
+//  public Set<Viewer> getViewers() {
+//    return viewers;
+//  }
+//
+//  public void setViewers(Set<Viewer> viewers) {
+//    this.viewers = viewers;
+//  }
 
   public String getHeaders() {
     return "color, priceInHryvnas, producer, yearOfProduction, type";

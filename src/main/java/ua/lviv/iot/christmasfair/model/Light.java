@@ -1,13 +1,33 @@
 package ua.lviv.iot.christmasfair.model;
 
 import java.util.EnumSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Light extends AbstractDecor {
   private double maxVoltage;
   private int numberOfBulbs;
+  
+  @ManyToOne(fetch = FetchType.EAGER, targetEntity = DecorBox.class)
+  @JoinColumn(name = "box_id")
+  @JsonIgnoreProperties("decorations")
+  protected DecorBox box;
+  
+  @ManyToMany(fetch = FetchType.EAGER, targetEntity = Viewer.class)
+  @JoinTable(name = "Decor_Viewers", joinColumns = {
+      @JoinColumn(name = "decor_id", nullable = false) }, inverseJoinColumns = {
+          @JoinColumn(name = "viewer_id", nullable = false) })
+  @JsonIgnoreProperties("observedDecorations")
+  protected Set<Viewer> viewers;
   
   public Light() {
     super();
@@ -34,6 +54,22 @@ public class Light extends AbstractDecor {
 
   public void setNumberOfBulbs(int numberOfBulbs) {
     this.numberOfBulbs = numberOfBulbs;
+  }
+
+  public DecorBox getBox() {
+    return box;
+  }
+
+  public void setBox(DecorBox box) {
+    this.box = box;
+  }
+
+  public Set<Viewer> getViewers() {
+    return viewers;
+  }
+
+  public void setViewers(Set<Viewer> viewers) {
+    this.viewers = viewers;
   }
 
   public String getHeaders() {

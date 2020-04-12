@@ -3,9 +3,13 @@ package ua.lviv.iot.christmasfair.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class DecorBox {
@@ -14,7 +18,12 @@ public class DecorBox {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer Id;
   private double volume;
-  private Set<AbstractDecor> decorations;
+  @OneToMany(mappedBy = "box", fetch = FetchType.EAGER, targetEntity = Light.class)
+  @JsonIgnoreProperties("box")
+  private Set<Light> decorations;
+
+  public DecorBox() {
+  }
 
   public Integer getId() {
     return Id;
@@ -32,11 +41,11 @@ public class DecorBox {
     this.volume = volume;
   }
 
-  public Set<AbstractDecor> getDecorations() {
+  public Set<Light> getDecorations() {
     return decorations;
   }
 
-  public void setDecorations(Set<AbstractDecor> decorations) {
+  public void setDecorations(Set<Light> decorations) {
     this.decorations = decorations;
   }
 }
