@@ -1,7 +1,7 @@
 package ua.lviv.iot.christmasfair.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -9,14 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity
 public class Viewer {
   
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer Id;
+  private Integer id;
   private String firstName;
   private String secondName;
   @ManyToMany(mappedBy = "viewers", fetch = FetchType.EAGER, targetEntity = Light.class)
@@ -28,11 +26,11 @@ public class Viewer {
   }
 
   public Integer getId() {
-    return Id;
+    return id;
   }
 
   public void setId(Integer id) {
-    Id = id;
+    this.id = id;
   }
 
   public String getFirstName() {

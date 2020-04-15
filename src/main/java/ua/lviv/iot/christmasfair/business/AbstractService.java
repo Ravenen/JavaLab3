@@ -1,7 +1,6 @@
 package ua.lviv.iot.christmasfair.business;
 
 import java.util.List;
-
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.jpa.repository.JpaRepository;
 

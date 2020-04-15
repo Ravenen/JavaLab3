@@ -1,16 +1,14 @@
 package ua.lviv.iot.christmasfair.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.EnumSet;
 import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Light extends AbstractDecor {
