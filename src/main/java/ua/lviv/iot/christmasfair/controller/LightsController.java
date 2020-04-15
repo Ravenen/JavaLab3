@@ -28,38 +28,38 @@ public class LightsController {
 
   @GetMapping
   public List<Light> getAllLights() {
-    return lightService.getAllLights();
+    return lightService.getAllObjects();
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Light> getLight(final @PathVariable("id") Integer lightId) {
+  public ResponseEntity<Light> getObject(final @PathVariable("id") Integer lightId) {
     Light currentLight;
-    ResponseEntity<Light> response = (currentLight = lightService.getLight(lightId)) == null
+    ResponseEntity<Light> response = (currentLight = lightService.getObject(lightId)) == null
         ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<>(currentLight, HttpStatus.OK);
     return response;
   }
 
   @PostMapping
-  public Light createLight(final @RequestBody Light light) {
+  public Light createObject(final @RequestBody Light light) {
     light.setId(idCounter.incrementAndGet());
-    lightService.createLight(light);
+    lightService.createObject(light);
     return light;
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<Light> updateLight(final @PathVariable("id") Integer lightId, final @RequestBody Light light) {
+  public ResponseEntity<Light> updateObject(final @PathVariable("id") Integer lightId, final @RequestBody Light light) {
     light.setId(lightId);
     Light oldLight;
-    ResponseEntity<Light> response = (oldLight = lightService.updateLight(lightId, light)) == null
+    ResponseEntity<Light> response = (oldLight = lightService.updateObject(lightId, light, new Light())) == null
         ? new ResponseEntity<Light>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<Light>(oldLight, HttpStatus.OK);
     return response;
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Light> deleteLight(final @PathVariable("id") Integer lightId) {
-    HttpStatus status = lightService.deleteLight(lightId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+  public ResponseEntity<Light> deleteObject(final @PathVariable("id") Integer lightId) {
+    HttpStatus status = lightService.deleteObject(lightId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
     return new ResponseEntity<Light>(status);
   }
 }

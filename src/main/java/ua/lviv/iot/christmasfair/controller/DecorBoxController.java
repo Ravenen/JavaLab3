@@ -1,7 +1,6 @@
 package ua.lviv.iot.christmasfair.controller;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ua.lviv.iot.christmasfair.business.DecorBoxService;
 import ua.lviv.iot.christmasfair.model.DecorBox;
-import ua.lviv.iot.christmasfair.model.Viewer;
 
 @RestController
 @RequestMapping("/boxes")
@@ -25,7 +23,6 @@ public class DecorBoxController {
 
   @Autowired
   private DecorBoxService decorBoxService;
-  private AtomicInteger idCounter = new AtomicInteger();
 
   @GetMapping("/test")
   public DecorBox getViewerTest() {
@@ -34,13 +31,13 @@ public class DecorBoxController {
   
   @GetMapping
   public List<DecorBox> getAllBoxes() {
-    return decorBoxService.getAllBoxes();
+    return decorBoxService.getAllObjects();
   }
 
   @GetMapping("/{id}")
   public ResponseEntity<DecorBox> getBox(final @PathVariable("id") Integer boxId) {
     DecorBox currentDecorBox;
-    ResponseEntity<DecorBox> response = (currentDecorBox = decorBoxService.getBox(boxId)) == null
+    ResponseEntity<DecorBox> response = (currentDecorBox = decorBoxService.getObject(boxId)) == null
         ? new ResponseEntity<>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<>(currentDecorBox, HttpStatus.OK);
     return response;
@@ -48,8 +45,7 @@ public class DecorBoxController {
 
   @PostMapping
   public DecorBox createBox(final @RequestBody DecorBox box) {
-    box.setId(idCounter.incrementAndGet());
-    decorBoxService.createBox(box);
+    decorBoxService.createObject(box);
     return box;
   }
 
@@ -57,7 +53,7 @@ public class DecorBoxController {
   public ResponseEntity<DecorBox> updateBox(final @PathVariable("id") Integer boxId, final @RequestBody DecorBox box) {
     box.setId(boxId);
     DecorBox oldDecorBox;
-    ResponseEntity<DecorBox> response = (oldDecorBox = decorBoxService.updateBox(boxId, box)) == null
+    ResponseEntity<DecorBox> response = (oldDecorBox = decorBoxService.updateObject(boxId, box, new DecorBox())) == null
         ? new ResponseEntity<DecorBox>(HttpStatus.NOT_FOUND)
         : new ResponseEntity<DecorBox>(oldDecorBox, HttpStatus.OK);
     return response;
@@ -65,7 +61,7 @@ public class DecorBoxController {
 
   @DeleteMapping("/{id}")
   public ResponseEntity<DecorBox> deleteBox(final @PathVariable("id") Integer boxId) {
-    HttpStatus status = decorBoxService.deleteBox(boxId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
+    HttpStatus status = decorBoxService.deleteObject(boxId) ? HttpStatus.OK : HttpStatus.NOT_FOUND;
     return new ResponseEntity<DecorBox>(status);
   }
 
