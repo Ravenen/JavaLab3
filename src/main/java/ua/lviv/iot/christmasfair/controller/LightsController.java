@@ -1,7 +1,6 @@
 package ua.lviv.iot.christmasfair.controller;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,6 @@ public class LightsController {
 
   @Autowired
   private LightService lightService;
-  private AtomicInteger idCounter = new AtomicInteger();
 
   @GetMapping
   public List<Light> getAllLights() {
@@ -40,7 +38,6 @@ public class LightsController {
 
   @PostMapping
   public Light createObject(final @RequestBody Light light) {
-    light.setId(idCounter.incrementAndGet());
     lightService.createObject(light);
     return light;
   }

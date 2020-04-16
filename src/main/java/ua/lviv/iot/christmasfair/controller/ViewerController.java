@@ -1,7 +1,6 @@
 package ua.lviv.iot.christmasfair.controller;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,6 @@ public class ViewerController {
 
   @Autowired
   private ViewerService viewerService;
-  private AtomicInteger idCounter = new AtomicInteger();
   
   @GetMapping("/test")
   public Viewer getViewerTest() {
@@ -45,7 +43,6 @@ public class ViewerController {
 
   @PostMapping
   public Viewer createObject(final @RequestBody Viewer viewer) {
-    viewer.setId(idCounter.incrementAndGet());
     viewerService.createObject(viewer);
     return viewer;
   }
